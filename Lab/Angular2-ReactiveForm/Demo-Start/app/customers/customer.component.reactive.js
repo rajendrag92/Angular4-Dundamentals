@@ -19,7 +19,7 @@ var CustomerReactiveComponent = (function () {
             firstName: ['', forms_1.Validators.required],
             lastName: ['', forms_1.Validators.required],
             email: ['', forms_1.Validators.required],
-            IsCatlog: [false]
+            isCatlog: [false]
         });
     };
     CustomerReactiveComponent = __decorate([

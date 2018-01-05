@@ -21,7 +21,7 @@ import {FormGroup,Validators,FormArray,AbstractControl,FormBuilder,FormControl,F
             firstName: ['',Validators.required],
             lastName:['',Validators.required],
             email:['',Validators.required],
-            IsCatlog:[false]
+            isCatlog:[false]
         });
      }
 

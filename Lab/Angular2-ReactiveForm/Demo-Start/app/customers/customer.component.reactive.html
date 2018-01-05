@@ -11,7 +11,7 @@
               >
             <fieldset>
                 <div class="form-group"
-                [ngClass]="{'has-error':(customerForm.get('firstName').touched || !customerForm.get('firstName').dirty) &&!customerForm.get('firstName').valid}"
+                [ngClass]="{'has-error':(customerForm.get('firstName').touched || customerForm.get('firstName').dirty) &&!customerForm.get('firstName').valid}"
                   >
                     <label class="col-md-2 control-label" 
                            for="firstNameId">First Name</label>
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="form-group"
-                    >
+                   [ngClass]="{'has-error':(customerForm.get('lastName').touched || customerForm.get('lastName').dirty) &&!customerForm.get('lastName').valid}" >
                     <label class="col-md-2 control-label" 
                         for="lastNameId">Last Name</label>
 
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="form-group"
-                    >
+                [ngClass]="{'has-error':(customerForm.get('email').touched || customerForm.get('email').dirty) &&!customerForm.get('email').valid}"  >
                     <label class="col-md-2 control-label" 
                         for="emailId">Email</label>
 
@@ -70,13 +70,14 @@
                         <label>
                             <input id="sendCatalogId"
                                    type="checkbox"
+                            formControlName="isCatlog"
                          >
                             Send me your catalog
                         </label>
                     </div>
                 </div>
                 
-                <div >
+                <div *ngIf ='isCatlog' >
                     <div class="form-group" >
                         <label class="col-md-2 control-label">Address Type</label>
                         <div class="col-md-8">

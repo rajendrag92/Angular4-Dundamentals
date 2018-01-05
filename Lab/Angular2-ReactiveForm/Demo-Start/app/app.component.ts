@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
     selector: 'my-app',
     template: `
         <div class="container">
-          <my-signup></my-signup>
+          
+          <customer-reactive></customer-reactive>
         </div>
     `
 })

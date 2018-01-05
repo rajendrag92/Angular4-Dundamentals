@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CustomerComponent } from './customers/customer.component';
+import {CustomerReactiveComponent} from './customers/customer.component.reactive'
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { CustomerComponent } from './customers/customer.component';
   ],
   declarations: [
     AppComponent,
-    CustomerComponent
+    CustomerComponent,
+    CustomerReactiveComponent
   ],
   bootstrap: [AppComponent]
 })

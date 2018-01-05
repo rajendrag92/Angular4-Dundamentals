@@ -9,18 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
 var CustomerReactiveComponent = (function () {
-    function CustomerReactiveComponent() {
+    function CustomerReactiveComponent(formBuilder) {
+        this.formBuilder = formBuilder;
     }
     CustomerReactiveComponent.prototype.ngOnInit = function () {
-        throw new Error("Method not implemented.");
+        this.customerForm = this.formBuilder.group({
+            firstName: ['', forms_1.Validators.required],
+            lastName: ['', forms_1.Validators.required],
+            email: ['', forms_1.Validators.required],
+            IsCatlog: [false]
+        });
     };
     CustomerReactiveComponent = __decorate([
         core_1.Component({
             selector: 'customer-reactive',
             templateUrl: './app/customers/customer.component.reactive.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [forms_1.FormBuilder])
     ], CustomerReactiveComponent);
     return CustomerReactiveComponent;
 }());

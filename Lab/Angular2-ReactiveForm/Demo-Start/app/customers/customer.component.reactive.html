@@ -6,10 +6,13 @@
     <div class="panel-body">
         <form class="form-horizontal"
               novalidate
+              [formGroup]='customerForm'
+
               >
             <fieldset>
                 <div class="form-group"
-                   >
+                [ngClass]="{'has-error':(customerForm.get('firstName').touched || !customerForm.get('firstName').dirty) &&!customerForm.get('firstName').valid}"
+                  >
                     <label class="col-md-2 control-label" 
                            for="firstNameId">First Name</label>
 
@@ -20,6 +23,7 @@
                                placeholder="First Name (required)" 
                                required 
                                minlength="3"
+                               formControlName="firstName"
                      />
                        
                     </div>
@@ -37,6 +41,7 @@
                                placeholder="Last Name (required)" 
                                required 
                                maxlength="50"
+                               formControlName='lastName'
                      />
                     </div>
                 </div>
@@ -53,6 +58,8 @@
                                placeholder="Email (required)" 
                                required
                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+"
+                               formControlName='email'
+                              
                      />
                         
                     </div>
@@ -162,7 +169,7 @@
         </form>
     </div>
 </div>
-<!-- <br>Dirty: {{ signupForm.dirty }} 
-<br>Touched: {{ signupForm.touched }}
-<br>Valid: {{ signupForm.valid }}
-<br>Value: {{ signupForm.value | json }} -->
+<br>Dirty: {{customerForm.dirty }} 
+<br>Touched: {{customerForm.touched }}
+<br>Valid: {{customerForm.valid }}
+<br>Value: {{customerForm.value | json }}

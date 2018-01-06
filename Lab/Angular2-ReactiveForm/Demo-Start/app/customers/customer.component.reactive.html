@@ -11,7 +11,7 @@
               >
             <fieldset>
                 <div class="form-group"
-                [ngClass]="{'has-error':(customerForm.get('firstName').touched || customerForm.get('firstName').dirty) &&!customerForm.get('firstName').valid}"
+                [ngClass]="{'has-error':invalidFristName}"
                   >
                     <label class="col-md-2 control-label" 
                            for="firstNameId">First Name</label>
@@ -77,7 +77,7 @@
                     </div>
                 </div>
                 
-                <div *ngIf ='isCatlog' >
+                <div *ngIf ='showAddress' >
                     <div class="form-group" >
                         <label class="col-md-2 control-label">Address Type</label>
                         <div class="col-md-8">

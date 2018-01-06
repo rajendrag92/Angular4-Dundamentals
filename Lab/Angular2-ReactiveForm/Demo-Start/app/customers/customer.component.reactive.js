@@ -15,11 +15,22 @@ var CustomerReactiveComponent = (function () {
         this.formBuilder = formBuilder;
     }
     CustomerReactiveComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.customerForm = this.formBuilder.group({
             firstName: ['', forms_1.Validators.required],
             lastName: ['', forms_1.Validators.required],
             email: ['', forms_1.Validators.required],
             isCatlog: [false]
+        });
+        this.customerForm.get('isCatlog').valueChanges.subscribe(function (value) {
+            console.log("Value intrested " + value);
+            _this.showAddress = value;
+        });
+        var firstName = this.customerForm.get('firstName');
+        firstName.valueChanges.subscribe(function (frm) {
+            console.log(frm);
+            _this.invalidFristName = (firstName.dirty || firstName.touched)
+                && firstName.valid;
         });
     };
     CustomerReactiveComponent = __decorate([

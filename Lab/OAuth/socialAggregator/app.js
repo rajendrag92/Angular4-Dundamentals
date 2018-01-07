@@ -6,10 +6,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var session = require('express-session');
-var GoogleStrategy = require('passport-google-oauth');
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var auth = require('./routes/auth');
 
 var app = express();
 
@@ -26,7 +27,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(session({secret:'Any'}));
+app.use(session({secret:'something',resave: true,
+saveUninitialized: true}));
 
 passport.serializeUser(function(user,done){
   done(null,user);
@@ -37,16 +39,17 @@ passport.deserializeUser(function(){
 });
 
 passport.use(new GoogleStrategy({
-  clientId:'',
-  clientSecret:'',
-  callBackUrl:'',
+  clientID:'775383455085-s6j9b4mnuar3dob44d6voi2g1v40v2da.apps.googleusercontent.com',
+  clientSecret:'jsdbL2YCgyqL7pfxP1hhowYS',
+  callbackURL:'http://localhost:2000/auth/google/callback'},
   function(req,accessToken,refreshToken,profile,done){
     done(null,profile)
   }
-}));
+));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/auth',auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

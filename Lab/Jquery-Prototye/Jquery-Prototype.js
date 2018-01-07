@@ -58,4 +58,4 @@ using this function as constructor */
  console.log("Fluffy age is => " + fluffy.age);
  console.log("Rocky age is => " + rocky.age);
  
- console.log("length of name is => " + rocky['name'])
+ console.log("length of name is => " + rocky['nameLength'])

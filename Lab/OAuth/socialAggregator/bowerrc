@@ -1,0 +1,5 @@
+{
+    "directory":"public/lib",
+    "strict-ssl": false,  
+    "registry": "http://registry.bower.io/packages/"
+}
